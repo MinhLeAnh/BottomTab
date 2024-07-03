@@ -1,1 +1,2 @@
-hình ảnh giao diện ở Styling/Styling.jpg
+hình ảnh giao diện ở homeScreen.jpg và scanScreen.jpg
+
