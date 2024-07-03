@@ -1,42 +1,112 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import * as React from 'react';
+import { Text, View, StyleSheet,Image } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-const Square = ({ backgroundColor, text }) => {
+function Home() {
   return (
-    <View style={[styles.square, { backgroundColor }]}>
-      <Text style={styles.squareText}>{text}</Text>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text style={{fontSize:20,fontWeight:'bold'}}>Hello!</Text>
     </View>
   );
-};
+}
 
-const App = () => {
+function Scan() {
   return (
-    <View style={styles.container}>
-      <Square backgroundColor="#007700" text="Square 1" />
-      <Square backgroundColor="#00CED1" text="Square 2" />
-      <Square backgroundColor="#CD853F" text="Square 3" />
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center',paddingHorizontal:20 }}>
+      <Image
+        style={styles.image}
+        source={require('./assets/image.png')}
+      />
+      <Text style={{fontSize:20, fontWeight:'bold',marginBottom:20}}>Scan, Pay & Enjoy</Text>
+      <Text style={{fontSize:18,textAlign:'center'}}>scan products you want to buy at your favourite store and pay by your phone & enjoy happy, friendly Shopping</Text>
     </View>
   );
-};
+}
+
+function Notifications() {
+  return (
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Nothing</Text>
+    </View>
+  );
+}
+
+const Tab = createMaterialBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      activeColor="#e91e63"
+      labeled={false}
+      labelStyle={{ fontSize: 12 }}
+      style={{ backgroundColor: 'tomato' }}
+    >
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="home" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Notifications"
+        component={Notifications}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="bell" color={color} size={26} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Scan"
+        component={Scan}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="line-scan" color={color} size={26} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="History"
+        component={Notifications}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="history" color={color} size={26} />
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Cart"
+        component={Notifications}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="cart-outline" color={color} size={26} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection:'row'
-  },
-  square: {
-    width: 100,
-    height: 100,
-    margin: 10,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  squareText: {
-    color: 'white',
-    fontWeight: 'bold',
+  image:{
+    width: 200,
+    height: 200,
+    marginBottom:20
   },
 });
 
-export default App;
+export default function App() {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
+  );
+}

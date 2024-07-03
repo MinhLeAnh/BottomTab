@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Styling",
-    "slug": "Styling",
+    "name": "BottomTab",
+    "slug": "BottomTab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
