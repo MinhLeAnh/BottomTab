@@ -1,2 +1,5 @@
-hình ảnh giao diện ở homeScreen.jpg và scanScreen.jpg
+giao diện homeScreen.jpg
+<img src ="./homeScreen.jpg"
+
+giao diện scanScreen.jpg
 <img src="./scanScreen.jpg"/>
